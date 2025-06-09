@@ -4,7 +4,7 @@ metadata:
   name: server
   namespace: als
   annotations:
-    build: "20250609_233845"
+    build: "20250609_234303"
 spec:
   replicas: 1
   selector:
@@ -15,7 +15,7 @@ spec:
       labels:
         app: server
       annotations:
-        build: "20250609_233845"
+        build: "20250609_234303"
     spec:
       securityContext:
         runAsUser: 1000
@@ -33,8 +33,8 @@ spec:
               adduser -u 1000 -G als -D als
               apk add --no-cache git gosu
               git clone https://github.com/wsva/als_server_build
-              chown -R als:als /home/als/als_server
-              gosu als ./als_server/als_server
+              chown -R als:als als_server_build
+              gosu als ./als_server_build/als_server
           ports:
             - containerPort: 443
           volumeMounts:
