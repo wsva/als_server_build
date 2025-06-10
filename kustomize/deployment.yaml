@@ -4,7 +4,7 @@ metadata:
   name: server
   namespace: als
   annotations:
-    build: "20250609_235127"
+    build: "20250610_002205"
 spec:
   replicas: 1
   selector:
@@ -15,7 +15,7 @@ spec:
       labels:
         app: server
       annotations:
-        build: "20250609_235127"
+        build: "20250610_002205"
     spec:
       containers:
         - name: server
@@ -26,12 +26,9 @@ spec:
             - -c
             - |
               set -e
-              addgroup -g 1000 als
-              adduser -u 1000 -G als -D als
-              apk add --no-cache git gosu
+              apk add --no-cache git
               git clone https://github.com/wsva/als_server_build
-              chown -R als:als als_server_build
-              gosu als ./als_server_build/als_server
+              ./als_server_build/als_server
           ports:
             - containerPort: 443
           volumeMounts:
