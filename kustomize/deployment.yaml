@@ -4,7 +4,7 @@ metadata:
   name: server
   namespace: als
   annotations:
-    build: "20250610_003314"
+    build: "20250611_112337"
 spec:
   replicas: 1
   selector:
@@ -15,7 +15,7 @@ spec:
       labels:
         app: server
       annotations:
-        build: "20250610_003314"
+        build: "20250611_112337"
     spec:
       containers:
         - name: server
